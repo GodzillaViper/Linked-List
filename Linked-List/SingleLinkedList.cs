@@ -1,75 +1,135 @@
-class SingleLinkedList<T> {
-    private Node<T> head;
-    
-    public SingleLinkedList() {
+
+using System;
+using System.Collections.Generic;
+
+class SingleLinkedList<T>
+{
+    Node<T> head;
+
+    public SingleLinkedList()
+    {
         head = null;
     }
-    
-    public void addFirst(T data) {
+
+    // Lägger till en nod i början av listan
+    public void addFirst(T data)
+    {
         head = new Node<T>(data, head);
     }
-    
-    public void addLast(T data) {
-        if (head == null) {
-            head = new Node<T>(data);
+
+    // Lägger till en nod i slutet av listan
+    public void addNodeLast(T data)
+    {
+        Node<T> newNode = new Node<T>(data);
+        if (head == null)
+        {
+            head = newNode;
             return;
         }
 
-        Node<T> current = head;
-        while (current.Next != null) {
-            current = current.Next;
+        Node<T> temp = head;
+        while (temp.Next != null)
+        {
+            temp = temp.Next;
         }
-        current.Next = new Node<T>(data);
+        temp.Next = newNode;
     }
-    
-    public void addAt(T data, int position) {
-        if (position == 0) {
-            addFirst(data);
+
+    // Tar bort en nod på en specifik position
+    public void removeNode(int position)
+    {
+        if (head == null)
+        {
+            Console.WriteLine("Listan är tom.");
             return;
         }
-        
-        Node<T> current = head;
-        for (int i = 0; current != null && i < position - 1; i++) {
-            current = current.Next;
+
+        if (position < 0)
+        {
+            Console.WriteLine("Ogiltig position.");
+            return;
         }
-        
-        if (current == null) return;
-        
-        current.Next = new Node<T>(data, current.Next);
-    }
-    
-    public bool inList(T value) {
-        Node<T> current = head;
-        while (current != null) {
-            if (EqualityComparer<T>.Default.Equals(current.Data, value)) {
-                return true;
-            }
-            current = current.Next;
-        }
-        return false;
-    }
-    
-    public void deleteNode(T value) {
-        if (head == null) return;
-        
-        if (EqualityComparer<T>.Default.Equals(head.Data, value)) {
+
+        // Tar bort den första noden
+        if (position == 0)
+        {
             head = head.Next;
             return;
         }
-        
-        Node<T> current = head;
-        while (current.Next != null && !EqualityComparer<T>.Default.Equals(current.Next.Data, value)) {
-            current = current.Next;
-        }
-        
-        if (current.Next == null) return;
-        
-        current.Next = current.Next.Next;
-    }
-    
-    public void printList() {
+
         Node<T> temp = head;
-        while (temp != null) {
+        int count = 0;
+
+        // Går till noden innan den som ska tas bort
+        while (temp != null && count < position - 1)
+        {
+            temp = temp.Next;
+            count++;
+        }
+
+        // Om positionen är utanför listans gränser
+        if (temp == null || temp.Next == null)
+        {
+            Console.WriteLine("Positionen är utanför listans gränser.");
+            return;
+        }
+
+        // Hoppar över noden som ska tas bort
+        temp.Next = temp.Next.Next;
+    }
+
+    // Sorterar listan med Bubble Sort genom att flytta pekarna
+    public void bubbleSort(IComparer<T> comparer)
+    {
+        if (head == null || head.Next == null)
+        {
+            return; // Listan är tom eller har bara en nod
+        }
+
+        bool swapped;
+        do
+        {
+            swapped = false;
+            Node<T> current = head;
+            Node<T> prev = null;
+
+            while (current != null && current.Next != null)
+            {
+                Node<T> next = current.Next;
+
+                // Jämför data i den aktuella noden och nästa nod
+                if (comparer.Compare(current.Data, next.Data) > 0)
+                {
+                    // Byter plats på noderna genom att justera pekarna
+                    if (prev == null)
+                    {
+                        // Byter plats på de två första noderna
+                        head = next;
+                    }
+                    else
+                    {
+                        prev.Next = next;
+                    }
+
+                    current.Next = next.Next;
+                    next.Next = current;
+
+                    swapped = true;
+                }
+
+                // Flyttar till nästa par
+                prev = swapped ? next : current;
+                current = current.Next;
+            }
+        } while (swapped);
+    }
+
+    // Skriver ut listan
+    public void printList()
+    {
+        Node<T> temp = head;
+        while (temp != null)
+        {
             Console.Write(temp.Data + " ");
             temp = temp.Next;
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kamran.allahverdi\\Linked-List\\Linked-List\\Linked-List.csproj": {}
+    "c:\\Users\\kamran.allahverdi\\Desktop\\Programmering-2\\Linked-List\\Linked-List\\Linked-List.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kamran.allahverdi\\Linked-List\\Linked-List\\Linked-List.csproj": {
+    "c:\\Users\\kamran.allahverdi\\Desktop\\Programmering-2\\Linked-List\\Linked-List\\Linked-List.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kamran.allahverdi\\Linked-List\\Linked-List\\Linked-List.csproj",
+        "projectUniqueName": "c:\\Users\\kamran.allahverdi\\Desktop\\Programmering-2\\Linked-List\\Linked-List\\Linked-List.csproj",
         "projectName": "Linked-List",
-        "projectPath": "C:\\Users\\kamran.allahverdi\\Linked-List\\Linked-List\\Linked-List.csproj",
+        "projectPath": "c:\\Users\\kamran.allahverdi\\Desktop\\Programmering-2\\Linked-List\\Linked-List\\Linked-List.csproj",
         "packagesPath": "C:\\Users\\kamran.allahverdi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kamran.allahverdi\\Linked-List\\Linked-List\\obj\\",
+        "outputPath": "c:\\Users\\kamran.allahverdi\\Desktop\\Programmering-2\\Linked-List\\Linked-List\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -59,12 +60,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
